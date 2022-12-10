@@ -1,4 +1,4 @@
-![workflow](https://github.com/YoonShweZin/seMethods/actions/workflows/main.yml/badge.svg)
+![workflow](https://github.com/YoonShweZin/sem/actions/workflows/main.yml/badge.svg)
 
 [![LICENSE](https://img.shields.io/github/license/YoonShweZin/sem.svg?style=flat-square)](https://github.com/YoonShweZin/sem/blob/master/LICENSE)
 
