@@ -195,12 +195,11 @@ public class App
 
         // Extract employee salary information
         ArrayList<Employee> employees = a.getAllSalaries();
+        //Print a list of employee no, first name, last name and salaries.
+        a.printSalaries(employees);
 
         // Test the size of the returned data - should be 240124
         //System.out.println(employees.size());
-
-        //Print a list of employee no, first name, last name and salaries.
-        a.printSalaries(employees);
 
         // Disconnect from database
         a.disconnect();
