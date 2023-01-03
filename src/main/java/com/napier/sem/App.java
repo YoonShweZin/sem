@@ -1,5 +1,9 @@
 package com.napier.sem;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -155,7 +159,12 @@ public class App
      * Prints a list of employees.
      * @param employees The list of employees to print.
      */
-    public void printSalaries(ArrayList<Employee> employees)
+    /**
+     * Outputs to Markdown
+     *
+     * @param employees
+     */
+    public void printSalaries(ArrayList<Employee> employees, String Salaries)
     {
         // Check employees is not null
         if (employees == null)
@@ -164,7 +173,7 @@ public class App
             return;
         }
 
-        // Print header
+/**        // Print header
         System.out.println(String.format("%-10s %-15s %-20s %-8s", "Emp No", "First Name", "Last Name", "Salary"));
         // Loop over all employees in the list
         for (Employee emp : employees)
@@ -176,6 +185,31 @@ public class App
                     String.format("%-10s %-15s %-20s %-8s",
                             emp.emp_no, emp.first_name, emp.last_name, emp.salary);
             System.out.println(emp_string);
+        }**/
+        StringBuilder sb = new StringBuilder();
+        // Print header
+        sb.append("| Emp No | First Name | Last Name | Salary |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all employees in the list
+        for (Employee emp : employees)
+        {
+            if (emp == null)
+                continue;
+
+            sb.append("| " + emp.emp_no + " | " +
+                    emp.first_name + " | " + emp.last_name + " | " +
+                    emp.salary + " |\r\n");
+        }
+        try
+        {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + Salaries)));
+            writer.write(sb.toString());
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
         }
     }
 
@@ -196,7 +230,7 @@ public class App
         // Extract employee salary information
         ArrayList<Employee> employees = a.getAllSalaries();
         //Print a list of employee no, first name, last name and salaries.
-        a.printSalaries(employees);
+        a.printSalaries(employees, "Salaries.md");
 
         // Test the size of the returned data - should be 240124
         //System.out.println(employees.size());

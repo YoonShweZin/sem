@@ -1,12 +1,11 @@
 package com.napier.sem;
 
-        import org.junit.jupiter.api.BeforeAll;
-        import org.junit.jupiter.api.Test;
-        import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import java.util.ArrayList;
 
-        import java.util.ArrayList;
-
-        import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest
 {
@@ -21,7 +20,7 @@ public class AppTest
     @Test
     void printSalariesTestNull()
     {
-        app.printSalaries(null);
+        app.printSalaries(null,null);
     }
 
     // test what happens when employees empty:
@@ -29,7 +28,7 @@ public class AppTest
     void printSalariesTestEmpty()
     {
         ArrayList<Employee> employess = new ArrayList<Employee>();
-        app.printSalaries(employess);
+        app.printSalaries(employess, null);
     }
 
     //print a list with a null value in it
@@ -38,7 +37,7 @@ public class AppTest
     {
         ArrayList<Employee> employess = new ArrayList<Employee>();
         employess.add(null);
-        app.printSalaries(employess);
+        app.printSalaries(employess, null);
     }
 
     // test for normal conditions
@@ -53,6 +52,6 @@ public class AppTest
         emp.title = "Engineer";
         emp.salary = 55000;
         employees.add(emp);
-        app.printSalaries(employees);
+        app.printSalaries(employees, null);
     }
 }
