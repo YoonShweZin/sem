@@ -164,7 +164,7 @@ public class App
      *
      * @param employees
      */
-    public void printSalaries(ArrayList<Employee> employees, String Salaries)
+    public void printSalaries(ArrayList<Employee> employees, String filename)
     {
         // Check employees is not null
         if (employees == null)
@@ -197,13 +197,12 @@ public class App
                 continue;
 
             sb.append("| " + emp.emp_no + " | " +
-                    emp.first_name + " | " + emp.last_name + " | " +
-                    emp.salary + " |\r\n");
+                    emp.first_name + " | " + emp.last_name +" | " + emp.salary + " | \r\n");
         }
         try
         {
             new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + Salaries)));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
             writer.write(sb.toString());
             writer.close();
         }
